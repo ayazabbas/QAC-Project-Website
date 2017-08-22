@@ -41,3 +41,8 @@ legend {
 .garage-container button {
     margin-right: 10px;
 }
+.garage-container textarea, select, input {
+    color: white;
+    background-color: #404040;
+    border: none;
+}
