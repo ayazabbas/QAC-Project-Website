@@ -8,30 +8,27 @@
             Search for kings by one of the following attributes: name, country, house, years
             </br>
             <input type="text" id="searchText"/>
-            <button type="button" onclick="displayKing();">Search</button>
+            <button type="button" onclick="displayKings();">Search</button>
         </form>
         <p id="result"></p>
         <script>
-            var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
-            var request = new XMLHttpRequest();
-            request.open("GET", requestURL);
-            request.responseType = "json";
-            request.send();
-            request.onload = function() {
-                console.log("Response revieved");
-                var requestData = request.response;
-            }
-
-            function displayKing() {
-                var searchText = document.getElementById("searchText").value.toLowerCase();
+            function displayKings() {
                 var output = document.getElementById("result");
-                for (var i = 0; i < requestData.length; i++) {
-                    var king = requestData[i];
-                    var attributes = king.attributes;
-                    console.log("king['nm'");
-                    for (var j = 0; j < attributes.length; j++) {
-                        if (attributes[j] === searchText) {
-                            output.innerHTML += "Name: " + king["nm"].toLowerCase() + "</br>City: " + king["cty"].toLowerCase() + "</br>House: " + king["hse"].toLowerCase() + "</br>Years: " + king["yrs"].toLowerCase() + "</br></br>";
+                output.innerHTML = "";
+                var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
+                var request = new XMLHttpRequest();
+                request.open("GET", requestURL);
+                request.responseType = "json";
+                request.send();
+                request.onload = function() {
+                    var requestData = request.response;
+                    var searchText = document.getElementById("searchText").value.toLowerCase();
+                    for (var i = 0; i < requestData.length; i++) {
+                        var king = requestData[i];
+                        for (var atr in king) {
+                            if (king[atr].toLowerCase() === searchText) {
+                                output.innerHTML += "Name: " + king["nm"] + "</br>City: " + king["cty"] + "</br>House: " + king["hse"] + "</br>Years: " + king["yrs"] + "</br></br>";
+                            }
                         }
                     }
                 }
