@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ayaz Abbas - Garage</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- My CSS -->
+    <link href="../css/mystyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+    </script>
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="javascript_exercises.html">QAC Javascript Exercises</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <h1>Ayaz's Garage</h1>
+            <div class="container-fluid" style="display: flex;">
+                <div class="garage-container">
+                    <div style="width: 50%;">
+                        <fieldset style="height: 100%;">
+                            <legend>
+                                <h4>New Vehicle</h4>
+                            </legend>
+                            <form>
+                                Type:
+                                <select style="width: 100%;">
+                                    <option value="Car">Car</option>
+                                    <option value="Truck">Truck</option>
+                                    <option value="Motorcycle">Motorcycle</option>
+                                </select>
+                                </br></br>
+                                Number Plate:
+                                <input type="text" style="width: 100%;"/>
+                                </br></br>
+                                Faults:
+                                <textarea style="width: 100%; resize: none;" rows=5></textarea>
+                            </form>
+                            </br>
+                        </fieldset>
+                    </div>
+
+                    <div style="width: 50%;">
+                        <fieldset style="height: 100%;">
+                            <legend>
+                                <h4>Vehicles</h4>
+                            </legend>
+                            <select size=10 style="width: 100%; margin-bottom: 10px;"></select>
+                            </br>
+                            <button type="button">Calculate bill</button>
+                            <button type="button">Check out</button>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/popper/popper.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    /*
+    $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    });
+    */
+        $("#wrapper").toggleClass("toggled");
+    </script>
+
+</body>
+
+</html>
