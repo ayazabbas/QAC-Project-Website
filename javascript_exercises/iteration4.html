@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Iteration 4</title>
+    </head>
+    <body>
+        <script>
+            function iteration4(number) {
+                var iterations = 0;
+                while(number != 1) {
+                    switch(number % 3) {
+                        case 0:
+                            console.log(number +": dividing by 3.");
+                            number = number / 3;
+                            break;
+                        case 1:
+                            console.log(number +": subtracting 1.");
+                            number = number - 1;
+                            break;
+                        case 2:
+                            console.log(number + ": adding 1.");
+                            number += 1;
+                    }
+                    iterations += 1;
+                }
+                console.log(number + ": process took " + iterations + " iterations.");
+            }
+            iteration4(427);
+        </script>
+    </body>
+</html>

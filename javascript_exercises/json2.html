@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON 2</title>
+    </head>
+    <body>
+        <form>
+            Search for kings by one of the following attributes: name, country, house, years
+            </br>
+            <input type="text" id="searchText"/>
+            <button type="button" onclick="displayKing();">Search</button>
+        </form>
+        <p id="result"></p>
+        <script>
+            var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
+            var request = new XMLHttpRequest();
+            request.open("GET", requestURL);
+            request.responseType = "json";
+            request.send();
+            request.onload = function() {
+                console.log("Response revieved");
+                var requestData = request.response;
+            }
+
+            function displayKing() {
+                var searchText = document.getElementById("searchText").value.toLowerCase();
+                var output = document.getElementById("result");
+                for (var i = 0; i < requestData.length; i++) {
+                    var king = requestData[i];
+                    var attributes = king.attributes;
+                    console.log("king['nm'");
+                    for (var j = 0; j < attributes.length; j++) {
+                        if (attributes[j] === searchText) {
+                            output.innerHTML += "Name: " + king["nm"].toLowerCase() + "</br>City: " + king["cty"].toLowerCase() + "</br>House: " + king["hse"].toLowerCase() + "</br>Years: " + king["yrs"].toLowerCase() + "</br></br>";
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

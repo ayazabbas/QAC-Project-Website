@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Iteration 3</title>
+    </head>
+    <body>
+        <script>
+            function fizzBuzz(limit, word1, word2) {
+                for(var i = 1; i < limit+1; i++) {
+                    if(i % 3 == 0 && i % 5 == 0) {
+                        console.log(word1 + word2);
+                    } else if(i % 3 == 0) {
+                        console.log(word1);
+                    } else if(i % 5 == 0) {
+                        console.log(word2);
+                    } else {
+                        console.log(i);
+                    }
+                }
+            }
+
+            fizzBuzz(200, "hello", "world");
+        </script>
+    </body>
+</html>

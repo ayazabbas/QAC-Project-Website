@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM 1</title>
+    </head>
+    <body>
+        <form>
+            Enter text to display: <input type="text" id="textbox1"/>
+            <br>
+        </form>
+        <button type="button" onclick="makeParagraph();">Show text</button>
+        <button type="button" onclick="updateParagraph();">Update text</button>
+        <button type="button" onclick="removeParagraph();">Remove text</button>
+        <div id="paragraph"></div>
+        <script>
+            var paraDiv = document.getElementById("paragraph");
+            function makeParagraph() {
+                if (!document.getElementById("para")) {
+                    var para = document.createElement("p");
+                    para.setAttribute("id", "para")
+                    para.textContent = document.getElementById("textbox1").value;
+                    paraDiv.appendChild(para);
+                }
+            }
+            function updateParagraph() {
+                if (paraDiv.children.length > 0) {
+                    para.textContent = document.getElementById("textbox1").value;
+                }
+            }
+            function removeParagraph() {
+                if (paraDiv.children.length > 0) {
+                    paraDiv.removeChild(para);
+                }
+            }
+        </script>
+    </body>
+</html>

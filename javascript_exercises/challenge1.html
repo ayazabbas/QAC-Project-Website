@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coding Challenge 1</title>
+    </head>
+    <body>
+        <form>
+            Enter a message: <input type='text' name='message'>
+            <button type='button' onclick="outputMessage();">Submit</button>
+        </form>
+        <script>
+            function outputMessage() {
+                var message = document.getElementsByName('message')[0].value;
+                document.write(message);
+                window.alert(message);
+                console.log(message);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Person Exercises</title>
+    </head>
+    <body>
+        <script>
+            var person = {
+                name: "Ayaz",
+                age: 21,
+                occupation: "Consultant"
+            }
+
+            function outputPersonDetails() {
+                console.log("Name: " + person.name + "\nAge: " + person.age + "\nOccupation: " + person.occupation);
+            }
+
+            function increasePersonAge() {
+                person.age += 1;
+            }
+
+            function updatePersonDetails() {
+                person.name = document.getElementsByName("personName")[0].value
+                person.age = document.getElementsByName("personAge")[0].value
+                person.occupation = document.getElementsByName("personOccupation")[0].value
+            }
+
+            function isAgeBetween20and40() {
+                if(person.age >= 20 && person.age <= 40) {
+                    console.log("True");
+                } else {
+                    console.log("False");
+                }
+            }
+        </script>
+        Person has default values. Use form and buttons to change values.<br><br>
+        <form>
+            Enter person name: <input type="text" name="personName">
+            <br>
+            Enter person age: <input type="number" name="personAge">
+            <br>
+            Enter person occupation: <input type="text" name="personOccupation">
+            <br>
+            <button type="button" onclick="updatePersonDetails();">Update person</button>
+        </form>
+            <br>
+            <button type="button" onclick="increasePersonAge();">Increase person age by 1 year</button>
+        <p>
+            <button type="button" onclick="outputPersonDetails();">Output Person details</button>
+        </p>
+        <p>
+            <button type="button" onclick="isAgeBetween20and40();">Is age 20-40?</button>
+        </p>
+    </body>
+</html>

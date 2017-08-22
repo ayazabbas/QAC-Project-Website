@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON 1</title>
+    </head>
+    <body>
+        <h1>Squad: </h1>
+        <p id="squadDeets"></p>
+        <h2>Members:</h2>
+        <p id="memberDeets"></p>
+        <script>
+            var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
+            var request = new XMLHttpRequest();
+            request.open("GET", requestURL);
+            request.responseType = "json";
+            request.send();
+            request.onload = function() {
+                var requestData = request.response;
+                var squadText = "Squad name: " + requestData["squadName"] + "</br>Home town: " + requestData["homeTown"] + "</br>Secret Base: " + requestData["secretBase"] + "</br>Active: " + requestData["active"];
+                var members = requestData["members"]
+                var memberText = "";
+                console.log(squadText);
+                document.getElementById("squadDeets").innerHTML = squadText;
+                for (var i = 0; i < members.length; i++) {
+                    var member = members[i];
+                    var powers = member["powers"];
+                    var powerText = "Powers: ";
+                    for (var j = 0; j < powers.length; j++) {
+                        powerText += "</br>&emsp;" + powers[j];
+                    }
+                    memberText += "Name: " + member["name"] + "</br>Age: " + member["age"] + "</br>Secret Identity " + member["secretIdentity"] + "</br>" + powerText + "</br></br>";
+                }
+                document.getElementById("memberDeets").innerHTML = memberText;
+            }
+        </script>
+    </body>
+</html>

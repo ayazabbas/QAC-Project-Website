@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Square and Sum</title>
+    </head>
+    <body>
+        <script>
+
+            function square(num) {
+                return num * num;
+            }
+
+            function outputSquare() {
+                console.log(square(document.getElementsByName("numberToSquare")[0].value));
+            }
+
+            function sum(num1, num2, num3) {
+                return parseInt(num1) + parseInt(num2) + parseInt(num3);
+            }
+            
+            function outputSum() {
+                var number1 = document.getElementsByName("numberToSum1")[0].value
+                var number2 = document.getElementsByName("numberToSum2")[0].value
+                var number3 = document.getElementsByName("numberToSum3")[0].value
+                console.log(sum(number1, number2, number3));
+            }
+        </script>
+        <p>
+            <br>
+            <form>
+                Enter number to square: <input type="number" name="numberToSquare">
+                <button type="button" onclick="outputSquare();">Square Number</button>
+            </form>
+        </p>
+        <p>
+            <br>
+            <form>
+                Enter 3 numbers to sum: <input type="number" name="numberToSum1"> <input type="number" name="numberToSum2"> <input type="number" name="numberToSum3">
+                <br>
+                <button type="button" onclick="outputSum();">Sum Numbers</button>
+            </form>
+        </p>
+    </body>
+</html>
