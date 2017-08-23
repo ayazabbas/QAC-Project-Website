@@ -10,7 +10,11 @@ class Vehicle {
         if (faults == null) {
             this.faults = ["none"];
         } else {
-            this.faults = faults;
+            if (faults[0].replace(/ /g, '') == "") {
+                this.faults = ["none"];
+            } else {
+                this.faults = faults;
+            }
         }
     }
 
@@ -107,6 +111,15 @@ function checkInVehicles() {
 function checkOutVehicles() {
     let selectGarage = document.getElementById("selectGarage");
     let indices = getSelectValues(selectGarage);
+    indices.sort();
+    indices.reverse();
+    indices.forEach((i) => {
+        vehicleList.push(garageVehicleList[i]);
+        garageVehicleList.splice(i, 1);
+    });
+    updateVehicles(selectGarage, garageVehicleList);
+    updateVehicles(document.getElementById("selectVehicles"), vehicleList);
+    document.getElementById("selectGarage").onchange();
 }
 
 function fixVehicles() {
@@ -125,7 +138,7 @@ function calculateBill() {
             if (vehicle.faults[0] == "none") {
                 console.log("no faults");
             } else {
-                switch (v.type) {
+                switch (vehicle.type) {
                     case ("Car"):
                         bill += 100;
                         faultMultiplier = 70;
@@ -142,8 +155,8 @@ function calculateBill() {
                 bill += faultMultiplier * vehicle.faults.length;
             }
         });
-        txtAreaBill.textContent = "£" + bill
+        txtAreaBill.textContent = "£" + bill;
     } else {
-        alert("Please select the vehicles you require the bill for.");
+        txtAreaBill.textContent = "";
     }
 }
