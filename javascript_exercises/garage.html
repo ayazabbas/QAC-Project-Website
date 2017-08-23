@@ -21,8 +21,7 @@
 </head>
 
 <body>
-    <script>
-    </script>
+    <script src="garage.js"></script>
 
     <div id="wrapper">
         <!-- Sidebar -->
@@ -41,43 +40,71 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <h1>Ayaz's Garage</h1>
+            </br>
             <div class="container-fluid" style="display: flex;">
-                <div class="garage-container">
-
+                <div class="program-container">
                     <div style="width: 50%;">
                         <fieldset style="height: 100%;">
                             <legend>
                                 <h4>New Vehicle</h4>
                             </legend>
-                            <form>
+                            <form id="formNewVehicle">
                                 Type:
-                                <select style="width: 100%; margin-bottom: 5px;">
-                                    <option value="car">Car</option>
-                                    <option value="truck">Truck</option>
-                                    <option value="motorcycle">Motorcycle</option>
+                                <select id="selectType">
+                                    <option value="Car">Car</option>
+                                    <option value="Truck">Truck</option>
+                                    <option value="Motorcycle">Motorcycle</option>
                                 </select>
                                 </br>
                                 Registration number:
-                                <input type="text" style="width: 100%; margin-bottom: 5px;"/>
+                                <input type="text" id="inputReg" />
                                 </br>
                                 Faults (enter one per line):
-                                <textarea style="width: 100%; resize: none; margin-bottom: 5px;" rows=5></textarea>
+                                <textarea style="resize: none;" rows=5 id="txtAreaFaults"></textarea>
                                 </br>
-                                <button type="button">Add vehicle</button>
+                                <button type="button" onclick="addVehicle();">Add vehicle</button>
                             </form>
-                            </br>
                         </fieldset>
                     </div>
-
-                    <div style="width: 50%;">
+                    <div style="width: 50%">
                         <fieldset style="height: 100%;">
                             <legend>
                                 <h4>Vehicles</h4>
                             </legend>
-                            <select size=10 style="width: 100%; margin-bottom: 10px;"></select>
+                            These are vehicles that exist outside of the garage. Select one and click 'check in' to add it to the garage or click 'remove
+                            vehicle' to delete it from the list.
+                            <select size=5 style="color: #B7B7B7;" id="selectVehicles" multiple="multiple" onchange="showFaults('txtAreaShowFaultsVeh', 'selectVehicles', vehicleList);"></select>
                             </br>
-                            <button type="button">Calculate bill</button>
-                            <button type="button">Check out</button>
+                            Faults (select only one vehicle to show):
+                            <textarea style="resize: none; color: #B7B7B7;" disabled rows=4 id="txtAreaShowFaultsVeh"></textarea>
+                            </br>
+                            <button type="button" onclick="checkInVehicles();">Check in</button>
+                            <button type="button" onclick="removeVehicles();">Remove vehicle(s)</button>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <fieldset>
+                            <legend>
+                                <h4>Garage</h4>
+                            </legend>
+                            <div class="garage-container">
+                                <div>
+                                    This is the garage, contents are shown below. Click 'Fix vehicle(s)' to remove all faults and 'Check out' to return vehicles
+                                    to the vehicles section.
+                                </div>
+                                <div style="padding-right: 7px; padding-top: 5px;">
+                                    <select size=10 id="selectGarage" style="color: #B7B7B7;" multiple="multiple" onchange="showFaults('txtAreaShowFaultsGar', 'selectGarage', garageVehicleList); calculateBill();"></select>
+                                    <button type="button">Fix vehicle(s)</button>
+                                    <button type="button">Check out</button>
+                                </div>
+                                <div style="padding-left: 7px; padding-top: 5px;">
+                                    Faults (select only one vehicle to show):
+                                    <textarea style="resize: none; color: #B7B7B7;" disabled rows=5 id="txtAreaShowFaultsGar"></textarea>
+                                    </br>
+                                    Bill:
+                                    <textarea disabled style="resize: none; color: #B7B7B7;" rows=1 id="txtAreaBill"></textarea>
+                                </div>
+                            </div>
                         </fieldset>
                     </div>
                 </div>
@@ -95,12 +122,12 @@
 
     <!-- Menu Toggle Script -->
     <script>
-    /*
-    $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-    });
-    */
+/*
+$("#menu-toggle").click(function(e) {
+e.preventDefault();
+$("#wrapper").toggleClass("toggled");
+});
+*/
         $("#wrapper").toggleClass("toggled");
     </script>
 
