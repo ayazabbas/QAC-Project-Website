@@ -78,7 +78,7 @@
                             Faults (select only one vehicle to show):
                             <textarea style="resize: none; color: #D0D0D0;" disabled rows=4 id="txtAreaShowFaultsVeh"></textarea>
                             </br>
-                            <button type="button" onclick="checkInVehicles();">Check in</button>
+                            <button type="button" onclick="checkInVehicles();">Check in vehicle(s)</button>
                             <button type="button" onclick="removeVehicles();">Remove vehicle(s)</button>
                         </fieldset>
                     </div>
@@ -94,8 +94,8 @@
                                 </div>
                                 <div style="padding-right: 7px; padding-top: 5px;">
                                     <select size=10 id="selectGarage" style="color: #D0D0D0;" multiple="multiple" onchange="showFaults('txtAreaShowFaultsGar', 'selectGarage', garageVehicleList); calculateBill();"></select>
-                                    <button type="button">Fix vehicle(s)</button>
-                                    <button type="button" onclick="checkOutVehicles();">Check out</button>
+                                    <button type="button" onclick="fixVehicles();">Fix vehicle(s)</button>
+                                    <button type="button" onclick="checkOutVehicles();">Check out vehicle(s)</button>
                                 </div>
                                 <div style="padding-left: 7px; padding-top: 5px;">
                                     Faults (select only one vehicle to show):

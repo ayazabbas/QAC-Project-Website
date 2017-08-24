@@ -123,7 +123,14 @@ function checkOutVehicles() {
 }
 
 function fixVehicles() {
-
+    let selectGarage = document.getElementById("selectGarage");
+    let indices = getSelectValues(selectGarage);
+    indices.forEach((i) => {
+        garageVehicleList[i].faults = ["none"];
+    });
+    showFaults('txtAreaShowFaultsGar', 'selectGarage', garageVehicleList);
+    alert(`Fixed ${indices.length} vehicles. Total bill: ${document.getElementById("txtAreaBill").value}`);
+    calculateBill();
 }
 
 function calculateBill() {
