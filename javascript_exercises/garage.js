@@ -123,14 +123,21 @@ function checkOutVehicles() {
 }
 
 function fixVehicles() {
+    let vehiclesFixed = 0;
     let selectGarage = document.getElementById("selectGarage");
     let indices = getSelectValues(selectGarage);
     indices.forEach((i) => {
-        garageVehicleList[i].faults = ["none"];
+        let vehicle = garageVehicleList[i];
+        if (vehicle.faults[0] != "none") {
+            vehiclesFixed += 1;
+            vehicle.faults = ["none"];
+        }
     });
-    showFaults('txtAreaShowFaultsGar', 'selectGarage', garageVehicleList);
-    alert(`Fixed ${indices.length} vehicles. Total bill: ${document.getElementById("txtAreaBill").value}`);
-    calculateBill();
+    if (vehiclesFixed > 0) {
+        showFaults('txtAreaShowFaultsGar', 'selectGarage', garageVehicleList);
+        alert(`Fixed ${indices.length} vehicles. Total bill: ${document.getElementById("txtAreaBill").value}`);
+        calculateBill();
+    }
 }
 
 function calculateBill() {
