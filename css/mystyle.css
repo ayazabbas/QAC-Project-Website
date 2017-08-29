@@ -28,7 +28,7 @@ legend {
     width: auto;
 }
 
-.program-container {
+.garage {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -40,10 +40,10 @@ legend {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.program-container button {
+.garage button {
     margin-right: 10px;
 }
-.program-container textarea, select, input {
+.garage textarea, select, input {
     color: #FFFFFF;
     background-color: #484848;
     border: none;
@@ -53,19 +53,19 @@ legend {
     padding-left: 5px;
     padding-right: 5px;
 }
-.program-container > div:last-child {
+.garage > div:last-child {
    flex: 1 0 100%;
 }
 
-.garage-container {
+.garage-contents {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.garage-container > div:first-child {
+.garage-contents> div:first-child {
     flex: 0 0 100%;
 }
-.garage-container > div {
+.garage-contents > div {
     flex: 1 0 50%;
 }
 
@@ -94,4 +94,33 @@ legend {
     -ms-user-select: none;
     user-select: none;
     cursor: pointer;
+}
+
+.hangman {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: gray;
+    color: #FFFFFF;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hangman textarea, select, input {
+    color: #FFFFFF;
+    background-color: #484848;
+    border: none;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.hangman-element {
+    padding-left: 5px;
+    padding-right: 5px;
 }
