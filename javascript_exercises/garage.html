@@ -22,7 +22,29 @@
 
 <body>
     <script src="garage.js"></script>
+    <script>
+        function setUserInterface() {
+            document.getElementById("userInterfaceButton").style = "background-color: #484848; color: #FFFFFF;";
+            document.getElementById("adminInterfaceButton").style = "";
+            document.getElementById("userInterface").style = "";
+            document.getElementById("adminInterface").style = "display: none;";
+        }
 
+        function setAdminInterface() {
+            document.getElementById("adminInterfaceButton").style = "background-color: #484848; color: #FFFFFF;";
+            document.getElementById("userInterfaceButton").style = "";
+            document.getElementById("userInterface").style = "display: none;";
+            document.getElementById("adminInterface").style = "";
+            let consoleDisplay = document.getElementById("consoleDisplay");
+            if (consoleDisplay.textContent === "") {
+                consoleDisplay.textContent = "Garage Admin Interface>\n";
+                consoleDisplay.textContent += 'Commands:\n-create [type] reg:[reg] faults:[comma separated or "none"]\n';
+                consoleDisplay.textContent += "\te.g. create car reg:ld09 zyy faults:none\n";
+                consoleDisplay.textContent += "-checkin [reg]\n-checkout [reg]\n-remove [reg] (can't remove checked in vehicles, checkout then remove)\n";
+                consoleDisplay.textContent += "-fix [reg] (removes vehicle faults)\n-output vehicles\n-output garage\n\n";
+            }
+        }
+    </script>
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -41,8 +63,16 @@
         <div id="page-content-wrapper">
             <h1>Ayaz's Garage</h1>
             </br>
-            <div class="container-fluid" style="display: flex;">
-                <div class="program-container">
+            <div class="container-fluid">
+                <div style="display: flex">
+                    <div class="interface-selector" id="userInterfaceButton" onclick="setUserInterface();" style="background-color: #484848; color: #FFFFFF;">
+                        <h4><label class="unselectable-link" style="margin-bottom: 0;">User Interface</label></h4>
+                    </div>
+                    <div class="interface-selector" id="adminInterfaceButton" onclick="setAdminInterface();">
+                        <h4><label class="unselectable-link" style="margin-bottom: 0;">Admin Interface</label></h4>
+                    </div>
+                </div>
+                <div class="program-container" id="userInterface">
                     <div style="width: 50%;">
                         <fieldset style="height: 100%;">
                             <legend>
@@ -51,9 +81,9 @@
                             <form id="formNewVehicle">
                                 Type:
                                 <select id="selectType">
-                                    <option value="Car">Car</option>
-                                    <option value="Truck">Truck</option>
-                                    <option value="Motorcycle">Motorcycle</option>
+                                    <option value="car">Car</option>
+                                    <option value="truck">Truck</option>
+                                    <option value="motorcycle">Motorcycle</option>
                                 </select>
                                 </br>
                                 Registration number:
@@ -108,7 +138,10 @@
                         </fieldset>
                     </div>
                 </div>
-
+                <div class="program-container" id="adminInterface" style="display: none;">
+                    <textarea disabled id="consoleDisplay" style="resize: none;" rows="20"></textarea>
+                    <input type="text" id="commandInput">
+                </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->

@@ -68,3 +68,30 @@ legend {
 .garage-container > div {
     flex: 1 0 50%;
 }
+
+.interface-selector {
+    background-color: gray;
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.interface-selector:hover {
+    background-color: #484848;
+    color: #D0D0D0;
+}
+
+.unselectable-link {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}

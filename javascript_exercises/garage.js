@@ -153,15 +153,15 @@ function calculateBill() {
                 console.log("no faults");
             } else {
                 switch (vehicle.type) {
-                    case ("Car"):
+                    case ("car"):
                         bill += 100;
                         faultMultiplier = 70;
                         break;
-                    case ("Motorcycle"):
+                    case ("motorcycle"):
                         bill += 50;
                         faultMultiplier = 40;
                         break;
-                    case ("Truck"):
+                    case ("truck"):
                         bill += 200;
                         faultMultiplier = 100;
                         break;
@@ -174,3 +174,136 @@ function calculateBill() {
         txtAreaBill.textContent = "";
     }
 }
+
+// for the admin interface
+function out(message) {
+    let consoleDisplay = document.getElementById("consoleDisplay");
+    consoleDisplay.textContent += message + "\n";
+    consoleDisplay.scrollTop = consoleDisplay.scrollHeight;
+}
+
+function readCommand() {
+    let vehicleSelectBox = document.getElementById("selectVehicles");
+    let garageSelectBox = document.getElementById("selectGarage");
+    let input = document.getElementById("commandInput");
+    let command = input.value.toLowerCase();
+    let found = false;
+    let reg = "";
+    let faults = "";
+    switch (command.split(" ")[0]) {
+        case "":
+            break;
+        case "create":
+            reg = input.value.match(/reg:(.*)(?= faults:)+/g)[0].split("reg:")[1];
+            faults = input.value.match(/faults:(.*)+/g)[0].split("faults:")[1].split(",");
+            vehicleList.push(new Vehicle(command.split(" ")[1], reg, faults));
+            updateVehicles(vehicleSelectBox, vehicleList);
+            out(input.value);
+            break;
+        case "remove":
+            reg = command.split("remove ")[1];
+            vehicleList.forEach((v) => {
+                if (v.reg === reg) {
+                    found = true;
+                    vehicleList.splice(vehicleList.indexOf(v), 1);
+                }
+            });
+            updateVehicles(vehicleSelectBox, vehicleList);
+            if (found) {
+                out(input.value);
+            } else {
+                out(`No vehicle with registration ${reg}`)
+            }
+            break;
+        case "checkin":
+            reg = command.split("checkin ")[1];
+            vehicleList.forEach((v) => {
+                if (v.reg === reg) {
+                    found = true;
+                    garageVehicleList.push(v);
+                    vehicleList.splice(vehicleList.indexOf(v), 1);
+                }
+            });
+            updateVehicles(vehicleSelectBox, vehicleList);
+            updateVehicles(garageSelectBox, garageVehicleList);
+            if (found) {
+                out(input.value);
+            } else {
+                out(`No vehicle with registration ${reg}`);
+            }
+            break;
+        case "checkout":
+            reg = command.split("checkout ")[1];
+            garageVehicleList.forEach((v) => {
+                if (v.reg === reg) {
+                    found = true;
+                    vehicleList.push(v);
+                    garageVehicleList.splice(garageVehicleList.indexOf(v), 1);
+                }
+            });
+            updateVehicles(vehicleSelectBox, vehicleList);
+            updateVehicles(garageSelectBox, garageVehicleList);
+            if (found) {
+                out(input.value);
+            } else {
+                out(`No vehicle with registration ${reg} in garage`);
+            }
+            break;
+        case "output":
+            if (command.split(" ")[1] === "vehicles") {
+                out(input.value);
+                if (vehicleList.length === 0) {
+                    out("No vehicles outside garage")
+                } else {
+                    vehicleList.forEach((v) => {
+                        out(`${v.type} (${v.reg}) faults:`);
+                        v.faults.forEach((f) => {
+                            out(`\t${f}`)
+                        });
+                    });
+                }
+            } else if (command.split(" ")[1] === "garage") {
+                if (garageVehicleList.length === 0) {
+                    out("No vehicles in garage")
+                } else {
+                    out(input.value);
+                    garageVehicleList.forEach((v) => {
+                        out(`${v.type} (${v.reg}) faults:`);
+                        v.faults.forEach((f) => {
+                            out(`\t${f}`)
+                        });
+                    });
+                }
+            } else {
+                out(input.value);
+                out("Please choose either vehicles or garage to output.");
+            }
+            break;
+        case "fix":
+            reg = command.split("fix ")[1];
+            garageVehicleList.forEach((v) => {
+                if (v.reg === reg) {
+                    found = true;
+                    v.faults = ["none"];
+                }
+            });
+            if (found) {
+                out(input.value);
+            } else {
+                out(`No vehicle with registration ${reg} in garage`);
+            }
+            updateVehicles(garageSelectBox, garageVehicleList);
+            break;
+        default:
+            out("Unrecognised command: " + command.split(" ")[0]);
+            break;
+    }
+    input.value = "";
+}
+
+function handleKeys(evt) {
+    if (evt.keyCode === 13) /*13 is the keyCode for the 'Enter' key*/ {
+        readCommand();
+    }
+}
+document.addEventListener('keydown', handleKeys, true);
