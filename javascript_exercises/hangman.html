@@ -41,13 +41,51 @@
             <h1>Hangman</h1>
             </br>
             <div class="container-fluid">
+                <h3>Select Difficulty:</h3>
+                </br>
+                <div class="interface-selector">
+                    <h4><label class="unselectable-link" style="margin-bottom: 0;">Easy</label></h4>
+                    <ul>
+                        <li>
+                            >7 letter words
+                        </li>
+                        <li>
+                            10 lives
+                        </li>
+                    </ul>
+                </div>
+                <div class="interface-selector">
+                    <h4><label class="unselectable-link" style="margin-bottom: 0;">Medium</label></h4>
+                    <ul>
+                        <li>
+                            5-7 letter words
+                        </li>
+                        <li>
+                            8 lives
+                        </li>
+                    </ul>
+                </div>
+                <div class="interface-selector">
+                    <h4><label class="unselectable-link" style="margin-bottom: 0;">Hard</label></h4>
+                    <ul>
+                        <li>
+                            3-5 letter words
+                        </li>
+                        <li>
+                            5 lives
+                        </li>
+                    </ul>
+                </div>
                 <div class="hangman">
                     <div class="hangman-element" style="width: 70%;">
                         <textarea disabled rows=13 style="resize: none;"></textarea>
-                    <input type="text" />
+                        <input type="text" />
                     </div>
                     <div class="hangman-element" style="width: 30%;">
-                        <textarea disabled rows=15 style="resize: none;"></textarea>
+                        <textarea disabled rows=13 style="resize: none;"></textarea>
+                        <div align="right">
+                            <button type="button">Exit game</button>
+                        </div>
                     </div>
                 </div>
             </div>
