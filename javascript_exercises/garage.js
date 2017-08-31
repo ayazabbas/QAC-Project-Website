@@ -59,7 +59,7 @@ function removeVehicles() {
 function updateVehicles(select, list) {
     select.innerHTML = "";
     list.forEach((a) => {
-        select.innerHTML += `<option value=${list.indexOf(a)}>${a.type} - Registration: ${a.reg}`
+        select.innerHTML += `<option value=${list.indexOf(a)}>${a.type} - Registration: ${a.reg}</option>`
     });
 }
 

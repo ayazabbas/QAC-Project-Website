@@ -38,77 +38,96 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <h1>Hangman</h1>
+            <h1 id="heading">Hangman</h1>
             </br>
             <div class="container-fluid">
-                <h3>Select Difficulty:</h3>
-                </br>
-                <div class="interface-selector">
-                    <h4><label class="unselectable-link" style="margin-bottom: 0;">Easy</label></h4>
-                    <ul>
-                        <li>
-                            >7 letter words
-                        </li>
-                        <li>
-                            10 lives
-                        </li>
-                    </ul>
-                </div>
-                <div class="interface-selector">
-                    <h4><label class="unselectable-link" style="margin-bottom: 0;">Medium</label></h4>
-                    <ul>
-                        <li>
-                            5-7 letter words
-                        </li>
-                        <li>
-                            8 lives
-                        </li>
-                    </ul>
-                </div>
-                <div class="interface-selector">
-                    <h4><label class="unselectable-link" style="margin-bottom: 0;">Hard</label></h4>
-                    <ul>
-                        <li>
-                            3-5 letter words
-                        </li>
-                        <li>
-                            5 lives
-                        </li>
-                    </ul>
-                </div>
-                <div class="hangman">
-                    <div class="hangman-element" style="width: 70%;">
-                        <textarea disabled rows=13 style="resize: none;"></textarea>
-                        <input type="text" />
+                <div id="settings">
+                    <div>
+                        <h4>Select user:</h4>
+                        <select id="userSelect" style="width:auto">
+                            <option value="abc">abc</option>
+                            <option value="abcd">abcd</option>
+                        </select>
+                        <button type="button" onclick="deleteUser();">Delete User</button>
+                        </br>
+                        <input type="text" id="usernameInput" style="background-color: gray; width: 30%;" />
+                        <button type="button" onclick="createUser();">Create user</button>
+                        </br>
+                        </br>
                     </div>
-                    <div class="hangman-element" style="width: 30%;">
-                        <textarea disabled rows=13 style="resize: none;"></textarea>
+                    <div>
+                        <h4>Select Difficulty:</h4>
+                    </div>
+                    <div class="interface-selector" onclick="setDifficulty('easy');" id="easyButton">
+                        <h4><label class="unselectable-link" style="margin-bottom: 0;">Easy</label></h4>
+                        <ul class="unselectable-link">
+                            <li>
+                                7-10 letter words
+                            </li>
+                            <li>
+                                10 lives
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="interface-selector" onclick="setDifficulty('medium');" id="mediumButton">
+                        <h4><label class="unselectable-link" style="margin-bottom: 0;">Medium</label></h4>
+                        <ul class="unselectable-link">
+                            <li>
+                                3-6 letter words
+                            </li>
+                            <li>
+                                7 lives
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="interface-selector" onclick="setDifficulty('hard');" id="hardButton">
+                        <h4><label class="unselectable-link" style="margin-bottom: 0;">Hard</label></h4>
+                        <ul class="unselectable-link">
+                            <li>
+                                3-6 letter words
+                            </li>
+                            <li>
+                                5 lives
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button type="button" onclick="startGame();">Start Game</button>
+                    </div>
+                </div>
+                <div class="hangman" id="hangmanGame" style="display: none;">
+                    <div class="hangman-element" style="width: 50%">
+                        <textarea disabled rows=5 style="resize: none; font-size: 18px; width: 100%;">abc</textarea>
+                        </br>
+                        <div id="hangmanInput">
+                        </div>
+                    </div>
+                    <div class="hangman-element" style="width: 50%">
                         <div align="right">
-                            <button type="button">Exit game</button>
+                            <button type="button" onclick="exitGame()">Exit game</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- /#page-content-wrapper -->
         </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
+        <!-- /#wrapper -->
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/popper/popper.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/popper/popper.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Menu Toggle Script -->
-    <script>
+        <!-- Menu Toggle Script -->
+        <script>
 /*
 $("#menu-toggle").click(function(e) {
 e.preventDefault();
 $("#wrapper").toggleClass("toggled");
 });
 */
-        $("#wrapper").toggleClass("toggled");
-    </script>
+            $("#wrapper").toggleClass("toggled");
+        </script>
 
 </body>
 

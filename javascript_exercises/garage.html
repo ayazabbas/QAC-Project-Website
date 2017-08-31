@@ -24,7 +24,7 @@
     <script src="garage.js"></script>
     <script>
         function setUserInterface() {
-            document.getElementById("userInterfaceButton").style = "background-color: #484848; color: #FFFFFF;";
+            document.getElementById("userInterfaceButton").style = "margin-right: 10px; background-color: #484848; color: #FFFFFF;";
             document.getElementById("adminInterfaceButton").style = "";
             document.getElementById("userInterface").style = "";
             document.getElementById("adminInterface").style = "display: none;";
@@ -32,7 +32,7 @@
 
         function setAdminInterface() {
             document.getElementById("adminInterfaceButton").style = "background-color: #484848; color: #FFFFFF;";
-            document.getElementById("userInterfaceButton").style = "";
+            document.getElementById("userInterfaceButton").style = "margin-right: 10px";
             document.getElementById("userInterface").style = "display: none;";
             document.getElementById("adminInterface").style = "";
             let consoleDisplay = document.getElementById("consoleDisplay");
@@ -65,7 +65,7 @@
             </br>
             <div class="container-fluid">
                 <div style="display: flex">
-                    <div class="interface-selector" id="userInterfaceButton" onclick="setUserInterface();" style="background-color: #484848; color: #FFFFFF;">
+                    <div class="interface-selector" id="userInterfaceButton" onclick="setUserInterface();" style="margin-right: 10px; background-color: #484848; color: #FFFFFF;">
                         <h4><label class="unselectable-link" style="margin-bottom: 0;">User Interface</label></h4>
                     </div>
                     <div class="interface-selector" id="adminInterfaceButton" onclick="setAdminInterface();">
