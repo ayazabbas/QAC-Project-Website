@@ -100,8 +100,12 @@ function startGame() {
 }
 
 function acceptLetter(code) {
-    guess = String.fromCharCode(code);
-    if(!word.includes(String.fromCharCode(code)))
+    let guess = String.fromCharCode(code);
+    if(!word.includes(String.fromCharCode(code))) {
+        lives -= 1;
+    } else {
+        //todo
+    }
 }
 
 function saveStatistics() {
