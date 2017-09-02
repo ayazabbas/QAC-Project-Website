@@ -21,6 +21,10 @@
 </head>
 
 <body>
+    <script src="../p5/p5.js"></script>
+    <script src="../p5/p5.min.js"></script>
+    <script src="../p5/addons/p5.dom.min.js"></script>
+    <script src="../p5/addons/p5.sound.min.js"></script>
     <script src="hangman.js"></script>
     <div id="wrapper">
         <!-- Sidebar -->
@@ -45,8 +49,7 @@
                     <div>
                         <h4>Select user:</h4>
                         <select id="userSelect" style="width:auto">
-                            <option value="abc">abc</option>
-                            <option value="abcd">abcd</option>
+                            <option value="guest">guest</option>
                         </select>
                         <button type="button" onclick="deleteUser();">Delete User</button>
                         </br>
@@ -96,16 +99,13 @@
                     </div>
                 </div>
                 <div class="hangman" id="hangmanGame" style="display: none;">
-                    <div class="hangman-element" style="width: 50%">
-                        <textarea disabled rows=5 style="resize: none; font-size: 18px; width: 100%;">abc</textarea>
-                        </br>
+                    <div id="canvas"></div>
+                    <div style="width: 90%">
                         <div id="hangmanInput">
                         </div>
                     </div>
-                    <div class="hangman-element" style="width: 50%">
-                        <div align="right">
-                            <button type="button" onclick="exitGame()">Exit game</button>
-                        </div>
+                    <div align="right">
+                        <button type="button" onclick="exitGame()">Exit Game</button>
                     </div>
                 </div>
             </div>
